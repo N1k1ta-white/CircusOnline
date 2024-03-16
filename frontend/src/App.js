@@ -5,6 +5,7 @@ import Home from './pages/Home/Home';
 import Login from './pages/Authorization/Login/Login';
 import Register from './pages/Authorization/Register/Register'
 import Header from "./components/Header/Header";
+import PlayGround from './utils/PlayGround';
 import IndexPage from './components/IndexPage/IndexPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProfile } from './utils/redux/authActions';
@@ -29,12 +30,11 @@ function App() {
             {/* <IndexPage/> */}
             <BrowserRouter>
               <Routes>
+                    <Route path='/playground' element={<PlayGround/>}/>
                     <Route path='/' element={<Home/>}/>
                     <Route path='/game' element={<Game/>}/>
                     <Route path='/login' element={<Login/>}/>
                     <Route path='/register' element={<Register/>}/>
-
-                    
               </Routes>
           </BrowserRouter>
       </>
