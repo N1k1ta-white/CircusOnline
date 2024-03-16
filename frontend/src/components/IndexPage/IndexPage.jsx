@@ -1,7 +1,7 @@
 import Button from "../Button/Button";
 import './IndexPage.css'
 import Input from "../Input/Input";
-export default function indexPage(){
+export default function IndexPage(){
     return (
         <section className="button-index-container">
             <section className="button-index-section">
