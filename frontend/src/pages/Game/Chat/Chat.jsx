@@ -32,9 +32,6 @@ export default function Chat({}){
         
     }
 
-
-
-
     return(
         <>
             <div class="menu">

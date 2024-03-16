@@ -7,7 +7,6 @@ export default function Card({...props}){
            <div className = {style.cardFrame} >
                 <img class = {style.image} src = {props.image} alt="MEME" />
             </div>     
-            
         </>
     )
 
