@@ -10,7 +10,7 @@ export default function Chat({}){
     const [messages,setMessages] = useState([]);
 
     const domain = "";
-    const userName = "Kolia";
+    const userName = "Kolia";//Имя клиента
     const socket = io();
 
     socket.on("connectoin",  "hi")

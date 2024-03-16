@@ -2,19 +2,28 @@ import React from 'react';
 import { useAuth } from './AuthContext';
 import axios from 'axios';
 import { loginRoute, logoutRoute } from '../utils/api/apiRoutes';
+import { host } from '../utils/api/apiRoutes';
+import api from '../utils/api/apiSettings';
+import Cookie from 'js-cookie'
 
 export const LoginButton = ({name}) => {
     const { login } = useAuth();
 
     const handleLogin = async () => {
         try {
-            const response = await axios.get(loginRoute, name);
-            if(response.status === 200){
-                localStorage.setItem("login", response.data.data)
-                login(); 
-            } else {
-                alert("Try another")
-            }
+            let response = api.post(loginRoute, {username: name})
+            .then(response => {
+                if(response.status >= 200 && response.status < 300){
+                    localStorage.setItem("login", response.data.data)
+                    localStorage.setItem("token", response.data.data.token)
+                    login(); 
+                } else {
+                    alert("Try another")
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
         } catch (error) {
             alert(error)
         }
@@ -29,13 +38,16 @@ export const LogoutButton = () => {
     const { logout } = useAuth();
 
     const handleLogout = async () => {
-        // Здесь может быть логика для выполнения выхода из системы, например, отправка запроса на сервер
-        const response = await axios.get(logoutRoute, localStorage.getItem("login"));
-        if(response.status === 200){
-            localStorage.clear("login")
-            logout(); 
-        } else {
-            alert("Something went wrong")
+        try {
+            const response = await axios.get(logoutRoute, localStorage.getItem("login"));
+            if(response.status === 200){
+                localStorage.clear()
+                logout(); 
+            } else {
+                alert("Something went wrong")
+            }
+        } catch (error) {
+            alert(error)
         }
     };
 

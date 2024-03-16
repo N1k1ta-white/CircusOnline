@@ -1,24 +1,19 @@
-import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useAuth } from './components/AuthContext'; // Подключаем контекст аутентификации
 import Rooms from './pages/Rooms/Rooms';
 import Home from './pages/Home/Home';
-import Room from './pages/Room/Room';
-import Game from './pages/Game/Game'
+import Session from './pages/Session/Session';
+import { useAuth } from './components/AuthContext';
+import { useEffect, useState } from 'react';
 
 function App() {
-    const { isAuthenticated } = useAuth();
-    useEffect(() => {
-        const login = localStorage.getItem("login")
-        console.log("User authorized:" + login ? login : "Unauthorized");
-    }, [isAuthenticated]);
+    const {isAuthenticated} = useAuth()
     return (
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={isAuthenticated ? <Rooms /> : <Home/>} />
-                    <Route path="/rooms" element={isAuthenticated ? <Rooms /> : <Navigate to="/" />} />
-                    <Route path="/room/game" element={<Game/>}/>
+                    <Route path="/" element={isAuthenticated ? <Navigate to="/rooms" />: <Home/>} />
+                    <Route path="/rooms" element={isAuthenticated ? <Rooms isAuthenticated = {isAuthenticated}/> : <Navigate to="/" />} />
+                    <Route path="/rooms/:name" element={<Session />}/>
                 </Routes>
             </BrowserRouter>
         </>
