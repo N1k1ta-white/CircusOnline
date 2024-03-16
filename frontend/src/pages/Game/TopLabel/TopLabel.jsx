@@ -5,7 +5,7 @@ export default function TopLabel(){
         <div class ="label">
         <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet"/>
 
-            <h1 class="playful" aria-label="Wash your hands">
+            <h1 class="playful" aria-label="CircusOnline">
             <span aria-hidden="true">C</span>
             <span aria-hidden="true">I</span>
             <span aria-hidden="true">R</span>

@@ -2,7 +2,8 @@ import React from "react";
 import "./Chat.css"
 export default function ChatMessage({...props}){
 
-    const name = "";
+    
+    const name = "";//Здесь должен быть sender
     let isMe = 'other'
     if(props.userName == name){
         isMe  = 'self'; 
