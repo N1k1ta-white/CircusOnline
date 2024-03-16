@@ -96,13 +96,13 @@ export default function Home() {
     const [login, setLogin] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault()
-
+        setLogin("")
     }
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit}>
                 <p>Welcome</p>
-                <input type="login" placeholder="Login" value={login} onChange={(e) => {setLogin(e.target.value)}}/><br />
+                <input type="text" placeholder="Login" value={login} onChange={(e) => {setLogin(e.target.value)}}/><br />
                 <LoginButton name={login}/>
             </form>
 

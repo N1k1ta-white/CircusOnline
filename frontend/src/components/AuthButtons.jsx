@@ -7,12 +7,16 @@ export const LoginButton = ({name}) => {
     const { login } = useAuth();
 
     const handleLogin = async () => {
-        const response = await axios.get(loginRoute, name);
-        if(response.status === 200){
-            localStorage.setItem("login", response.data.data)
-            login(); 
-        } else {
-            alert("Try another")
+        try {
+            const response = await axios.get(loginRoute, name);
+            if(response.status === 200){
+                localStorage.setItem("login", response.data.data)
+                login(); 
+            } else {
+                alert("Try another")
+            }
+        } catch (error) {
+            alert(error)
         }
     };
 
