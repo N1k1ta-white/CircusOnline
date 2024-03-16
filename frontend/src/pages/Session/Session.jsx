@@ -1,8 +1,12 @@
 import { useParams } from "react-router-dom";
 import styles from "./Session.module.css"
 import { useEffect } from "react";
-export default function Session (props) {
-    const { name } = useParams();
+import Chat from "./Chat/Chat"
+import styles from "./Game.module.css"
+import TopLabel from "./TopLabel/TopLabel"
+
+export default function Session ({children, name, ...props}) {
+    const name = useParams();
     useEffect(() => {
         console.log(name)
     }, [])
@@ -10,9 +14,13 @@ export default function Session (props) {
         <div className={styles.container}>
             <div className={styles.gameWindow}>
                 <div className={styles.chat}
-                ></div>
+                ><Chat /></div>
                 <div className={styles.game}>
-                    <div className={`${styles.gameWindowItem} ${styles.chat}`}></div>
+                    <div className={`${styles.gameWindowItem}`}>
+
+                    {/* {<TopLabel/> } */}
+
+                    </div>
                     <div className={`${styles.gameWindowItem} ${styles.player}`}></div>
                     <div className={`${styles.gameWindowItem} ${styles.empty}`}></div>
                     <div className={`${styles.gameWindowItem} ${styles.player}`}></div>
