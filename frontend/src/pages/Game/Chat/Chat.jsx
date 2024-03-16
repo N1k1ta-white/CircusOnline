@@ -13,7 +13,7 @@ export default function Chat({}){
     const userName = "Kolia";
     const socket = io();
 
-    socket.on("connectoin",  "hi");
+    socket.on("connectoin",  "hi")
      
     function handleInput(e){
         setMessage(e.target.value);
