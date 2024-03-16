@@ -2,9 +2,10 @@
     display: inline;
     width: 150px;
     height: 150px;
+    background: white;
 }
 .image{
     padding: 10px;
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
 }
