@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProfile } from './utils/redux/authActions';
 
 function App() {
+  
     const dispatch = useDispatch()
     const { userInfo } = useSelector(state => state.auth)
     useEffect(() => {
@@ -24,6 +25,9 @@ function App() {
     updateToken()
     // eslint-disable-next-line
   }, [dispatch])
+
+
+
   return (
       <>
           <Header/>
