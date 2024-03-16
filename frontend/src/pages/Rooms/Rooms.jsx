@@ -52,7 +52,7 @@ export default function Rooms() {
             })
                 .then(response => {
                     console.log(response.data);
-                    navigate(`/rooms/${response.data.name}`)
+                    navigate(`/rooms/${response.data.data.name}`)
                 })
                 .catch(error => {
                     console.log(error)
@@ -62,10 +62,12 @@ export default function Rooms() {
     }
     return (
         <>
-            {loading && <div className='loader'>Loading...</div>}
             {
-                !loading && 
+                loading ? 
+                <div className={styles['loader']}>Loading...</div>
+                :
                 <div className={styles["sessionScreen"]}>
+
                     <div className={styles['sessions']}>
                         {
                             sessions.map((item, index) => {
@@ -82,6 +84,7 @@ export default function Rooms() {
                         </div>
                     </div>
                 </div>
+
             }
         </>
     )

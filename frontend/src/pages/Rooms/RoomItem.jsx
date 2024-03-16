@@ -5,11 +5,19 @@ export default function RoomItem(props) {
 
   return (
     <div className={styles['roomItem']}>
-        <span>{props.name}</span>
-        <span>{props.owner}</span>
+        <h2 style={{
+            alignSelf: "center",
+            fontWeight: 700,
+            margin: 0
+        }}>{props.name}</h2>
+        <span><b><u>Owner:</u></b> {props.owner}</span>
+        <div className={styles["players"]}>
+            <span><b><u>Players:</u></b> {props.owner}</span>
+        </div>
+
         {
             props.players.map((item, index) => {
-                <div className="player">player {index}</div>
+                <div key={index} className={styles["player"]}>{item.name[0].toUpperCase()}</div>
             })
         }
     </div>
