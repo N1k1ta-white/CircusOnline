@@ -32,7 +32,7 @@ export default function Login(props) {
             <div className={`${style['cut-short']} ${style.cut}`}></div>
             <label for="email" className={style.placeholder}>Password</label>
         </div>
-        <button type="text" className={style.submit}  >Login</button>
+        <button type="text" className={style.submit} >Login</button>
         <button className={style.link } onClick={handleRegister}>Register?</button>
     </div>
     </>
