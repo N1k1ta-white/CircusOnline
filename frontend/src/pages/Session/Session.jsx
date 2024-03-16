@@ -1,5 +1,11 @@
-import styles from "./Game.module.css"
-export default function Game ({children, ...props}) {
+import { useParams } from "react-router-dom";
+import styles from "./Session.module.css"
+import { useEffect } from "react";
+export default function Session (props) {
+    const { name } = useParams();
+    useEffect(() => {
+        console.log(name)
+    }, [])
     return (
         <div className={styles.container}>
             <div className={styles.gameWindow}>

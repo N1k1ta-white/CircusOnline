@@ -1,4 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import api from '../utils/api/apiSettings';
+import { authCheck } from '../utils/api/apiRoutes';
+import Cookies from 'js-cookie';
 
 // Создаем контекст аутентификации
 const AuthContext = React.createContext();
@@ -6,6 +9,24 @@ const AuthContext = React.createContext();
 // Создаем компонент-провайдер, который предоставляет информацию об аутентификации
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    useEffect(() => {
+        const cookieValue = localStorage.getItem("token");
+        async function fetchData(cookieValue) {
+            console.log(cookieValue)
+            api.get(authCheck, {
+                headers: {
+                    auth: cookieValue // Set the Cookie header with the specified cookie string
+                }
+            })
+                .then(res => {
+                    setIsAuthenticated(res.status >=200 && res.status < 300)
+                })
+                .catch(error => {
+                    console.log(error)
+                });
+        }
+        fetchData(cookieValue);
+    }, [])
 
     // Метод для выполнения входа в систему
     const login = () => {
@@ -26,6 +47,5 @@ export const AuthProvider = ({ children }) => {
 
 // Хук для использования контекста аутентификации в компонентах
 export const useAuth = () => {
-    console.log(useContext(AuthContext))
     return useContext(AuthContext);
 };
