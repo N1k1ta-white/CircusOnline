@@ -1,44 +1,27 @@
-import React, { useEffect } from 'react'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Game from "./pages/Game/Game";
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useAuth } from './components/AuthContext'; // Подключаем контекст аутентификации
+import Rooms from './pages/Rooms/Rooms';
 import Home from './pages/Home/Home';
-import Login from './pages/Authorization/Login/Login';
-import Register from './pages/Authorization/Register/Register'
-import Header from "./components/Header/Header";
-import PlayGround from './utils/PlayGround';
-import IndexPage from './components/IndexPage/IndexPage';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProfile } from './utils/redux/authActions';
+import Room from './pages/Room/Room';
 
 function App() {
-    const dispatch = useDispatch()
-    const { userInfo } = useSelector(state => state.auth)
+    const { isAuthenticated } = useAuth();
     useEffect(() => {
-        const updateToken = async () => {
-        const data = await dispatch(fetchProfile())
-        console.log(data)
-        if (Object.keys(userInfo).length !== 0 && 'accessToken' in userInfo) {
-          window.localStorage.setItem('accessToken', data.payload.accessToken)
-        } 
-    }
-    updateToken()
-    // eslint-disable-next-line
-  }, [dispatch])
-  return (
-      <>
-          <Header/>
-            {/* <IndexPage/> */}
+        const login = localStorage.getItem("login")
+        console.log("User authorized:" + login ? login : "Unauthorized");
+    }, [isAuthenticated]);
+    return (
+        <>
             <BrowserRouter>
-              <Routes>
-                    <Route path='/playground' element={<PlayGround/>}/>
-                    <Route path='/' element={<Home/>}/>
-                    <Route path='/game' element={<Game/>}/>
-                    <Route path='/login' element={<Login/>}/>
-                    <Route path='/register' element={<Register/>}/>
-              </Routes>
-          </BrowserRouter>
-      </>
-  );
+                <Routes>
+                    <Route path="/" element={isAuthenticated ? <Rooms /> : <Home/>} />
+                    <Route path="/rooms" element={isAuthenticated ? <Rooms /> : <Navigate to="/" />} />
+                    <Route path="/room/:id" element={isAuthenticated ? <Room /> : <Navigate to="/"/>}/>
+                </Routes>
+            </BrowserRouter>
+        </>
+    );
 }
 
 export default App;
