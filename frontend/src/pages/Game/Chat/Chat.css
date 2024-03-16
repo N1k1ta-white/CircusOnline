@@ -53,6 +53,13 @@ a{
 .back:active {
     background: rgba(255,255,255,0.2);
 }
+.msg-name{
+    order: 3;
+    border-radius: 10px;
+    font-size: 10px;
+    padding: 3px;
+    margin-bottom: -5px;
+}
 .name{
     position: absolute;
     top: 15%;

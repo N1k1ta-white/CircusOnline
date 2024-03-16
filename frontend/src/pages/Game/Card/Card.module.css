@@ -1,0 +1,10 @@
+.cardFrame{
+    display: inline;
+    width: 150px;
+    height: 150px;
+}
+.image{
+    padding: 10px;
+    width: 140px;
+    height: 140px;
+}

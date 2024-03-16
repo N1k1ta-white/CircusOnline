@@ -40,6 +40,7 @@ export default function Chat({}){
             <div class="menu">
                 <div class="back"> <img src="https://i.imgur.com/DY6gND0.png" draggable="false"/></div>
                 <div class="name">{userName}</div>
+                
                 </div>
                 <ol class="chat"  >
                     {messages.map(msg => <ChatMessage {... msg}/>)}
