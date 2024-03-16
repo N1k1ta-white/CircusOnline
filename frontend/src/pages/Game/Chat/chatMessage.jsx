@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Chat.css"
 export default function ChatMessage({...props}){
 
     const name = "";
@@ -10,7 +10,7 @@ export default function ChatMessage({...props}){
 
     return(
         <>
-            <li class={isMe}>
+            <li class={isMe ='other'}>
                 <div class="avatar"><img src={props.src} draggable="false"/></div>
                     <div class="msg">
                         <p>{props.message}</p>

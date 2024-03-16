@@ -5,10 +5,9 @@ export default function Game ({children, ...props}) {
         <div className={styles.container}>
             <div className={styles.gameWindow}>
                 <div className={styles.chat}
-                ></div>
+                ><Chat /></div>
                 <div className={styles.game}>
                     <div className={`${styles.gameWindowItem} ${styles.chat}`}>
-                        <Chat />
                     </div>
                     <div className={`${styles.gameWindowItem} ${styles.player}`}></div>
                     <div className={`${styles.gameWindowItem} ${styles.empty}`}></div>
