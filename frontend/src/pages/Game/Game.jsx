@@ -1,3 +1,4 @@
+import Chat from "./Chat/Chat"
 import styles from "./Game.module.css"
 export default function Game ({children, ...props}) {
     return (
@@ -6,7 +7,9 @@ export default function Game ({children, ...props}) {
                 <div className={styles.chat}
                 ></div>
                 <div className={styles.game}>
-                    <div className={`${styles.gameWindowItem} ${styles.chat}`}></div>
+                    <div className={`${styles.gameWindowItem} ${styles.chat}`}>
+                        <Chat />
+                    </div>
                     <div className={`${styles.gameWindowItem} ${styles.player}`}></div>
                     <div className={`${styles.gameWindowItem} ${styles.empty}`}></div>
                     <div className={`${styles.gameWindowItem} ${styles.player}`}></div>

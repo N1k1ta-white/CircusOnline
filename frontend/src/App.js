@@ -4,6 +4,7 @@ import { useAuth } from './components/AuthContext'; // Подключаем ко
 import Rooms from './pages/Rooms/Rooms';
 import Home from './pages/Home/Home';
 import Room from './pages/Room/Room';
+import Game from './pages/Game/Game'
 
 function App() {
     const { isAuthenticated } = useAuth();
@@ -17,7 +18,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={isAuthenticated ? <Rooms /> : <Home/>} />
                     <Route path="/rooms" element={isAuthenticated ? <Rooms /> : <Navigate to="/" />} />
-                    <Route path="/room/:id" element={isAuthenticated ? <Room /> : <Navigate to="/"/>}/>
+                    <Route path="/room/game" element={<Game/>}/>
                 </Routes>
             </BrowserRouter>
         </>
