@@ -2,7 +2,8 @@ import React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Game from "./pages/Game/Game";
 import Home from './pages/Home/Home';
-import Authorization from './pages/Authorization/Authorization';
+import Login from './pages/Authorization/Login/Login';
+import Register from './pages/Authorization/Register/Register'
 import Header from "./components/Header/Header";
 import IndexPage from './components/IndexPage/IndexPage';
 
@@ -10,12 +11,15 @@ function App() {
   return (
       <>
           <Header/>
-            <IndexPage/>
+            {/* <IndexPage/> */}
             <BrowserRouter>
               <Routes>
                     <Route path='/' element={<Home/>}/>
                     <Route path='/game' element={<Game/>}/>
-                    <Route path='/auth' element={<Authorization/>}/>
+                    <Route path='/login' element={<Login/>}/>
+                    <Route path='/register' element={<Register/>}/>
+
+                    
               </Routes>
           </BrowserRouter>
       </>
