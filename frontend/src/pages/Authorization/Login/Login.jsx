@@ -23,7 +23,7 @@ export default function Login() {
 
     useEffect( () => {
         if(Object.keys(userInfo).length !== 0) {
-          navigate(`/home`)
+          navigate(`/`)
         }
     }, [navigate, userInfo] )
 
