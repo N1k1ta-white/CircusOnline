@@ -24,7 +24,7 @@ export default function Session ({children, ...props}) {
         return Math.floor(Math.random() * (max - min + 1)) + min; 
     }
 
-    IOSocket.on("turn",() =>{
+    IOSocket.on("turn",(data) =>{
         setStatus("TURN");
         setIsActive(true);
         setTopic(data.topic);
