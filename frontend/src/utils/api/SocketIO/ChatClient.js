@@ -82,5 +82,5 @@ class ChatClient {
 
 // Example usage
 
-const instance  = new ChatClient(host, 'chat', localStorage.getItem("toke"));
+const instance  = new ChatClient(host, 'chat', localStorage.getItem("token"));
 export default instance
