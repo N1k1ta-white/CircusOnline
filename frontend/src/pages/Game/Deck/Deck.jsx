@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Card from "../Card/Card"
+import styles from './Deck.module.css'
 
 export default function Deck(){
 
@@ -12,7 +13,7 @@ export default function Deck(){
 
     return(
         <>
-           <section className = "deck">
+           <section className = {styles["deck"]}>
                 {cards.map((crd, index) => <Card key = {index} {... crd} />)}
             </section> 
         </>
