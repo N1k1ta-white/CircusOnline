@@ -12,8 +12,8 @@ export default function Deck(){
 
     return(
         <>
-           <section class = "deck">
-                {cards.map(crd => <Card {... crd} />)}
+           <section className = "deck">
+                {cards.map((crd, index) => <Card key = {index} {... crd} />)}
             </section> 
         </>
     )

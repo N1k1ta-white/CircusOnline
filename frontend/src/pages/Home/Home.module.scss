@@ -49,6 +49,7 @@ $white: rgba(255,255,255,0.3);
       background: transparent;
       width: 200px;
       padding: 1em;
+      margin-top: 2em;
       margin-bottom: 2em;
       border: none;
       border-left: 1px solid $white;
@@ -141,8 +142,8 @@ $white: rgba(255,255,255,0.3);
     .drop-5 {
         height: 60px;
       width: 60px;
-      bottom: 200px;
-      left: 200px;
+      bottom: 240px;
+      left: 270px;
       z-index: -1;
     }
 

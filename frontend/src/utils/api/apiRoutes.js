@@ -1,4 +1,4 @@
-export const host = "http://37.187.140.59:5678"
+export const host = "https://circuss.club"
 
 //export const registerRoute = `${host}/api/register`
 export const loginRoute = `/user`
