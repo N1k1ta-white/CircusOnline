@@ -7,8 +7,12 @@ export default function Home() {
     const [login, setLogin] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault()
+        localStorage.setItem("currPlayer", login);
         setLogin("")
     }
+
+
+
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit}>

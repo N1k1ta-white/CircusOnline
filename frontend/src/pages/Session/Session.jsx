@@ -12,6 +12,7 @@ export default function Session ({children, ...props}) {
         console.log(name)
     }, [])
 
+
     return (
         <div className={styles.container}>
             <div className={styles.gameWindow}>
