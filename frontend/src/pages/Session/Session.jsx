@@ -17,6 +17,7 @@ export default function Session ({children, ...props}) {
     const [voteCards,setVoteCards] = useState([])
     const [status,setStatus] = useState("NULL");
     const [isActive,setIsActive]= useState(true)
+    const [date, setDate] = useState(new Date());
 
     function getRandomInt(min, max) {
         min = Math.ceil(min); 
@@ -50,18 +51,19 @@ export default function Session ({children, ...props}) {
     })
 
     IOSocket.get().on("vote",() => {
-        console.log("vote")
-        setStatus("VOTE")
-        setIsActive(true);
-        const cookieValue = localStorage.getItem("token");
-        async function fetchData(cookieValue) {
-            api.get(sessionRoute + `/${name}`, {
-                username: localStorage.getItem("login")
-            }, {
-                headers: {
-                    auth: cookieValue
-                }
-            })
+        if(status !== "VOTE") {
+            console.log("VOTE")
+            setStatus("VOTE")
+            setIsActive(true)
+            const cookieValue = localStorage.getItem("token");
+            async function fetchData(cookieValue) {
+                api.get(sessionRoute + `/${name}`, {
+                    username: localStorage.getItem("login")
+                }, {
+                    headers: {
+                        auth: cookieValue
+                    }
+                })
                 .then(response => {
                     console.log(response.data);
                     setOwner(response.data.data.owner)
@@ -77,8 +79,9 @@ export default function Session ({children, ...props}) {
                 .catch(error => {
                     console.log(error)
                 })
+            }
+            fetchData(cookieValue)
         }
-        fetchData(cookieValue)
     })
     
 
@@ -96,9 +99,9 @@ export default function Session ({children, ...props}) {
 
     function handleClickTurn(id){
         if(isActive){
-                IOSocket.get().emit("play",{username: localStorage.getItem('login'), cardid:id})
-                setIsActive(false);
-            }
+            IOSocket.get().emit("play",{username: localStorage.getItem('login'), cardid:id})
+            setIsActive(false);
+        }
     }
 
     const  {name} = useParams();
