@@ -24,7 +24,7 @@ export default function Session ({children, ...props}) {
         return Math.floor(Math.random() * (max - min + 1)) + min; 
     }
 
-    IOSocket.on("turn",(data) =>{
+    IOSocket.get().on("turn",(data) =>{
         setStatus("TURN");
         setIsActive(true);
         setTopic(data.topic);
@@ -39,7 +39,7 @@ export default function Session ({children, ...props}) {
         let arr = [img1,img2,img3,img4];
         setImages(arr);
     })
-    IOSocket.on("vote",() => {
+    IOSocket.get().on("vote",() => {
         setStatus("VOTE")
         setIsActive(true);
         const cookieValue = localStorage.getItem("token");
@@ -75,19 +75,19 @@ export default function Session ({children, ...props}) {
     
 
     function startButtonHandle(){
-        IOSocket.get().emit("start");
+        IOSocket.get().on.emit("start");
     }
     
     function handleClickVote(target){
         if(isActive){
-            IOSocket.emit("vote",{target})
+            IOSocket.get().onemit("vote",{target})
             setIsActive(false);
         }
     }
 
     function handleClickTurn(id){
         if(isActive){
-                IOSocket.emit("play",{username: localStorage.getItem('login'), cardid:id})
+                IOSocket.get().on.emit("play",{username: localStorage.getItem('login'), cardid:id})
                 setIsActive(false);
             }
     }
@@ -127,14 +127,14 @@ export default function Session ({children, ...props}) {
                     <div className={styles.ExitButton}>
                         <ExitButton/>
                     </div>
-                    <div className={`${styles.gameWindowItem} ${styles.empty}`}>
+                    <div className={`${styles.gameWindowItem} ${styles.playingDesk}`}>
                         <div className={styles.topic}>
-                            {topic}
+                            {!topic ? "Loading..." : topic}
                         </div>
                         {
                             status === "VOTE" ?  
-                                <section className = {styles["deck"]}>
-                            {voteCards.map((crd) => <img onClick={()=>handleClickVote(crd.username)} className = "image" src = {crd.card} alt="MEME" /> )}
+                            <section className = {styles["deck"]}>
+                                {voteCards.map((crd) => <img onClick={()=>handleClickVote(crd.username)} className = "image" src = {crd.card} alt="MEME" /> )}
                             </section>  : <></>
                         }
                     </div>

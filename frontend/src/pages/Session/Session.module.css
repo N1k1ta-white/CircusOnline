@@ -35,6 +35,30 @@
     grid-template-rows: 1fr 4fr 2fr;
     gap: 10px;
 }
+
+.playingDesk {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.playingDesk .topic {
+    width: 50%;
+}
+
+.playingDesk .deck {
+    display: flex;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: start;
+    width: 50%;
+}
+
+.playingDesk .deck img{
+    width: 30px;
+    height: 30px;
+}
+
 .Deck{
     display: block;
     flex: wrap;
