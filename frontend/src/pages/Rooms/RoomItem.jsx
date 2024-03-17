@@ -3,12 +3,14 @@ import styles from "./Room.module.css"
 import { useNavigate } from 'react-router-dom'
 import image from '../../assets/clown.png'
 import api from '../../utils/api/apiSettings'
+import ioSocket from '../../utils/api/SocketIO/ChatClient'
 import { sessionRoute } from '../../utils/api/apiRoutes'
 
 export default function RoomItem(props) {
     const navigate = useNavigate()
     const handleJoinGroup = () => {
         const cookieValue = localStorage.getItem("token");
+        ioSocket.joinRoom(props.name);
         async function fetchData(cookieValue) {
             api.post(sessionRoute + `/${props.name}`, {
                 username: localStorage.getItem("login")

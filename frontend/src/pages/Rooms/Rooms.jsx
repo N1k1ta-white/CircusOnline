@@ -17,10 +17,6 @@ export default function Rooms() {
     const [name, setName] = useState("")
     const navigate = useNavigate()
     
-    function handleConnect(){
-        ioSocket.checkConnection();
-    }
-
     useEffect(() => {
         const cookieValue = localStorage.getItem("token");
         let id
@@ -43,7 +39,7 @@ export default function Rooms() {
             }, 5000)
         }
         fetchData(cookieValue);
-
+        
         return () => {
             clearInterval(id)
         }
@@ -52,6 +48,7 @@ export default function Rooms() {
     const handleCreateSession = () => {
         setName("")
         const cookieValue = localStorage.getItem("token");
+        ioSocket.joinRoom(name);
         async function fetchData(cookieValue) {
             api.post(sessionRoute, {
                 name: name,
@@ -91,7 +88,7 @@ export default function Rooms() {
                         <div className={styles["newSessionInner"]}>
                             <Input type={"text"} placeholder={"Type a name"} value={name} setValue={setName} />
                             <button onClick={handleCreateSession}>Create session</button>
-                            <button onClick={handleConnect}>Connect IO</button>
+                           
                         </div>
                     </div>
                 </div>

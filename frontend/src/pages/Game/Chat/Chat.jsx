@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import {io} from "socket.io-client"
 import ChatMessage from './chatMessage';
 import "./Chat.css"
 
@@ -9,11 +8,7 @@ export default function Chat({}){
     const [message,setMessage] = useState('');
     const [messages,setMessages] = useState([]);
 
-    const domain = "";
-    const userName = "Kolia";//Имя клиента
-    const socket = io();
-
-    socket.on("connectoin",  "hi")
+    const userName = localStorage.getItem("currPlayer");//Имя клиента
      
     function handleInput(e){
         setMessage(e.target.value);
@@ -21,10 +16,6 @@ export default function Chat({}){
 
     function handleEnter(e){
         if(e.key === 'Enter' && message.trim().length > 0){
-            socket.emit("send message",{
-                sender:userName,
-                message: message
-            })
             messages.push({message,userName});
             setMessages(messages);
             setMessage("")
