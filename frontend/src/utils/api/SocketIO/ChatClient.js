@@ -17,6 +17,11 @@ class ChatClient {
             console.log('Connected to the chat server');
         });
 
+
+        this.socket.on('turn', () => {
+            console.log('TURN');
+        });
+
         this.socket.on('disconnect', () => {
             console.log('Disconnected from the chat server');
         });

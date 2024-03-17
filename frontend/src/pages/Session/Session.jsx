@@ -25,9 +25,11 @@ export default function Session ({children, ...props}) {
     }
 
     IOSocket.get().on("turn",(data) =>{
+        console.log("turn")
         setStatus("TURN");
         setIsActive(true);
         setTopic(data.topic);
+        console.log(data)
         let x = getRandomInt(1,300);
         let img1 = {crd:`${host}/${x}.jpg`, index:x,username:""};
         x = getRandomInt(1,300);
@@ -155,7 +157,7 @@ export default function Session ({children, ...props}) {
                                 width: "50%"
                             }}
                             onClick={startButtonHandle} 
-                            disabled = {localStorage.getItem("login") === owner}>START</button>
+                            disabled = {localStorage.getItem("login") !== owner}>START</button>
                     </div>
                 </div>
             </div>
