@@ -88,6 +88,7 @@ class ChatClient {
         this.socket.emit('sendMessage', { session, message });
     }
 
+    
     addCardToDesk(room, card, username) {
         this.socket.emit('addCardToDesk', { room, card, username });
     }
