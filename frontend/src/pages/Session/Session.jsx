@@ -39,7 +39,7 @@ export default function Session ({children, ...props}) {
                     </div>
                     <div className={`${styles.gameWindowItem} ${styles.player}`}></div>
                     <div className={`${styles.gameWindowItem} ${styles.Deck}`}>
-                        {/* <Deck/> */}
+                        <Deck />
                     </div>
                     <div className={`${styles.gameWindowItem} ${styles.player}`}></div>
                 </div>

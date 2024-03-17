@@ -3,7 +3,7 @@ import ioSocket from '../../../utils/api/SocketIO/ChatClient'
 import Card from "../Card/Card"
 import styles from './Deck.module.css'
 
-export default function Deck(){
+export default function Deck(props){
 
     const [cards,setCards] = useState([
         {image:"https://i.imgur.com/8nLFCVP.png",index : 0},
