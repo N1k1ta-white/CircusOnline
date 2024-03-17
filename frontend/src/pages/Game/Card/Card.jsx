@@ -1,13 +1,11 @@
 import style from "./Card.module.css"
-export default function Card({...props}){
+export default function Card(props){
+    const handleClick = () => {
+        
+    }
 
-    
     return(
-        <>
-           <div className = {style.cardFrame} >
-                <img className = {style.image} src = {props.image} alt="MEME" />
-            </div>     
-        </>
+        <img onClick={handleClick} className = {style.image} src = {props.card} alt="MEME" />  
     )
 
 }

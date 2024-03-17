@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import styles from "./Session.module.css"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Chat from "../Game/Chat/Chat";
 import TopLabel from '../Game/TopLabel/TopLabel'
 import Deck from "../Game/Deck/Deck"
@@ -28,7 +28,7 @@ export default function Session ({children, ...props}) {
                     <div className={`${styles.gameWindowItem} ${styles.empty}`}></div>
                     <div className={`${styles.gameWindowItem} ${styles.player}`}></div>
                     <div className={`${styles.gameWindowItem} ${styles.Deck}`}>
-                        {/* <Deck/> */}
+                        <Deck />
                     </div>
                     <div className={`${styles.gameWindowItem} ${styles.player}`}></div>
                 </div>
