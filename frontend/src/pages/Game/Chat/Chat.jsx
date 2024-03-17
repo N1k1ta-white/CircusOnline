@@ -34,17 +34,27 @@ export default function Chat({}){
 
     return(
         <>
-            <div class="menu">
-                <div class="back"> <img src="https://i.imgur.com/DY6gND0.png" draggable="false"/></div>
-                <div class="name">{userName}</div>
-                
+            <div className="menu">
+                <div className="back">
+                    <img className='avatar' src="https://i.imgur.com/DY6gND0.png" draggable="false"/>
                 </div>
-                <ol class="chat"  >
-                    {messages.map(msg => <ChatMessage {... msg}/>)}
-                </ol>
-
-            <input onChange={handleInput} class ="textarea" type="text" 
-                onKeyDown={handleEnter} placeholder="Type here!" value={message}/>            
+                <div className="name">{userName}</div>
+            </div>
+            <ol className="chat"  >
+                    {messages.map((msg, index) => <ChatMessage {... msg}/>)}
+            </ol>
+            <input 
+                style={{
+                    borderRadius: "0px 0px 20px 20px",
+                    height: "8%",
+                    border: 'none'
+                }}
+                onChange={handleInput} 
+                className ="textarea" type="text" 
+                onKeyDown={handleEnter} 
+                placeholder="Type here!" 
+                value={message}
+            />            
         </>
     )
 } 

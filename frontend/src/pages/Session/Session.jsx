@@ -15,8 +15,9 @@ export default function Session ({children, ...props}) {
     return (
         <div className={styles.container}>
             <div className={styles.gameWindow}>
-                <div className={styles.chat}
-                ><Chat /></div>
+                <div className={styles.chat}>
+                    <Chat />
+                </div>
                 <div className={styles.game}>
                     <div className={`${styles.gameWindowItem}`}>
                          {/* {<TopLabel/> }  */}

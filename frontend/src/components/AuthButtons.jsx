@@ -13,8 +13,10 @@ export const LoginButton = ({name}) => {
         try {
             let response = api.post(loginRoute, {username: name})
             .then(response => {
+                console.log(response.data)
                 if(response.status >= 200 && response.status < 300){
-                    localStorage.setItem("login", response.data.data)
+                    console.log(response.data.data)
+                    localStorage.setItem("login", response.data.data.user._username)
                     localStorage.setItem("token", response.data.data.token)
                     login(); 
                 } else {
