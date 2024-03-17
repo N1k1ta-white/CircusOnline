@@ -36,31 +36,59 @@
     gap: 10px;
 }
 
-.playingDesk {
+.playingDeskMain {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.playingDesk .topic {
+
+.playingDeskMain .topic {
     width: 50%;
     text-align: center;
     color: white;
 }
 
-.playingDesk .deck {
-    display: flex;
+.playingDeskMain .votes {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: start;
     width: 50%;
+    height: 100%;
 }
 
-.playingDesk .deck img{
-    width: 30px;
-    height: 30px;
+.playingDeskMain .votes img{
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 130px;
+    height: 130px;
 }
 
+
+
+.playingDesks {
+    width: 100%;
+}
+
+.playingDesks .deckSection{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.playingDesks .deckSection img{
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 130px;
+    height: 130px;
+}
+
+.playingDesks .deckSection img:hover{
+    border: 3px solid green;
+}
 
 
 .gameWindowItem {

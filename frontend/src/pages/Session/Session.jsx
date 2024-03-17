@@ -30,14 +30,21 @@ export default function Session ({children, ...props}) {
         setIsActive(true);
         setTopic(data.topic);
         console.log(data)
-        let x = getRandomInt(1,300);
-        let img1 = {crd:`${host}/${x}.jpg`, index:x,username:""};
-        x = getRandomInt(1,300);
-        let img2 = {crd:`${host}/${x}.jpg`, index:x,username:""};
-        x = getRandomInt(1,300);
-        let img3 = {crd:`${host}/${x}.jpg`, index:x,username:""};
-        x = getRandomInt(1,300);
-        let img4 = {crd:`${host}/${x}.jpg`, index:x,username:""};
+        let x = getRandomInt(1,30);
+        const moq = 'https://media.cnn.com/api/v1/images/stellar/prod/230721145700-cheezburger-cat-meme.jpg?c=original'
+        let img1 = {
+            crd: moq, //`${host}/image/${x}.jpg`, 
+        index:x,username:""};
+        x = getRandomInt(1,30);
+        let img2 = {crd: moq,//`${host}/${x}.jpg`,
+         index:x,username:""};
+        x = getRandomInt(1,30);
+        let img3 = {crd: moq,//`${host}/${x}.jpg`, 
+        index:x,username:""};
+        x = getRandomInt(1,30);
+        let img4 = {crd: moq,//`${host}/${x}.jpg`, 
+        index:x,username:""};
+
         let arr = [img1,img2,img3,img4];
         setImages(arr);
     })
@@ -129,14 +136,14 @@ export default function Session ({children, ...props}) {
                     <div className={styles.ExitButton}>
                         <ExitButton/>
                     </div>
-                    <div className={`${styles.gameWindowItem} ${styles.playingDesk}`}>
+                    <div className={`${styles.gameWindowItem} ${styles.playingDeskMain}`}>
                         <div className={styles.topic}>
                             {!topic ? "Loading..." : topic}
                         </div>
                         {
                             status === "VOTE" ?  
                             <section className = {styles["votes"]}>
-                                {voteCards.map((crd) => <img onClick={()=>handleClickVote(crd.username)} className = "image" src = {crd.card} alt="MEME" /> )}
+                                {voteCards.map((crd) => <img onClick={()=>handleClickVote(crd.username)} className = {styles.image} src = {crd.card} alt="MEME" /> )}
                             </section>  : <></>
                         }
                     </div>
@@ -145,7 +152,7 @@ export default function Session ({children, ...props}) {
                         <>{
                             status === "TURN"?
                             <section className = {styles.deckSection}>
-                                {images.map((crd,index) => <img value = {crd.index} onClick={(e)=>handleClickTurn(e.target.value)} className = "image" src = {crd.crd} alt="MEME" /> )}
+                                {images.map((crd,index) => <img value = {crd.index} onClick={(e)=>handleClickTurn(e.target.value)} className = {styles.image} src = {crd.crd} alt="MEME" /> )}
                             </section> 
                             :
                                 <>
