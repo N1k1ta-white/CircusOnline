@@ -2,11 +2,11 @@ import { useParams } from "react-router-dom";
 import styles from "./Session.module.css"
 import { useEffect, useState } from "react";
 import Chat from "../Game/Chat/Chat";
-import TopLabel from '../Game/TopLabel/TopLabel'
-import Deck from "../Game/Deck/Deck"
 import IOSocket from '../../utils/api/SocketIO/ChatClient'
 import ExitButton from "../Game/ExitButton/ExitButton";
-import { host } from "../../utils/api/apiRoutes";
+import { host, sessionRoute } from "../../utils/api/apiRoutes";
+import api from "../../utils/api/apiSettings";
+
 export default function Session ({children, ...props}) {
 
     const [tableCards,setTableCards] = useState([]);
@@ -24,7 +24,7 @@ export default function Session ({children, ...props}) {
         return Math.floor(Math.random() * (max - min + 1)) + min; 
     }
 
-    IOSocket.on("turn",() =>{
+    IOSocket.on("turn",(data) =>{
         setStatus("TURN");
         setIsActive(true);
         setTopic(data.topic);
@@ -55,15 +55,15 @@ export default function Session ({children, ...props}) {
                     console.log(response.data);
                     setOwner(response.data.data.owner)
                     let users = Object.values(response.data.data.players);
-                    let voteArray = users.map((data) => ({
-                        username, 
-                        card: host.concat("/"+ data.card +".jpg"),
-                        ...data
+                    let voteArray = users.map((item) => ({
+                        username: item.username, 
+                        card: host.concat("/"+ item.card +".jpg"),
+                        ...item
                     }))
                     setVoteCards(voteArray)
                     
-                    users[0].username;
-                    users[0].card;
+                    // users[0].username;
+                    // users[0].card;
 
                 })
                 .catch(error => {
