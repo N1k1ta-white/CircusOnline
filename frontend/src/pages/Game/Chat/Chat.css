@@ -50,7 +50,7 @@ a{
     align-items: end;
     gap: 10px;
     height: 82%;
-    background: rgb(248, 123, 39);
+    background: rgba(248, 123, 39, 0.5);
     margin: 0;
     padding: 10px;
 }

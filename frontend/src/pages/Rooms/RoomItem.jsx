@@ -45,8 +45,8 @@ export default function RoomItem(props) {
                 props.players.map((item, index) => {
                     return (
                         <div style = {{
-                            background: item._color
-                        }} key={index} className={styles["player"]}>{item._username?.charAt(0).toUpperCase()}</div>
+                            background: item.color
+                        }} key={index} className={styles["player"]}>{item.username?.charAt(0).toUpperCase()}</div>
                     )
                 })
             }

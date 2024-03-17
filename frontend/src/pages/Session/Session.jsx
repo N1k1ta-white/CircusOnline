@@ -52,7 +52,6 @@ export default function Session ({children, ...props}) {
                 }
             })
                 .then(response => {
-                    console.log(response.data);
                     setOwner(response.data.data.owner)
                     let users = Object.values(response.data.data.players);
                     let voteArray = users.map((item) => ({
@@ -104,7 +103,6 @@ export default function Session ({children, ...props}) {
                 }
             })
                 .then(response => {
-                    console.log(response.data);
                     setOwner(response.data.data.owner)
                 })
                 .catch(error => {

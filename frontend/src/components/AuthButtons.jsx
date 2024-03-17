@@ -2,9 +2,7 @@ import React from 'react';
 import { useAuth } from './AuthContext';
 import axios from 'axios';
 import { loginRoute, logoutRoute } from '../utils/api/apiRoutes';
-import { host } from '../utils/api/apiRoutes';
 import api from '../utils/api/apiSettings';
-import Cookie from 'js-cookie'
 
 export const LoginButton = ({name}) => {
     const { login } = useAuth();

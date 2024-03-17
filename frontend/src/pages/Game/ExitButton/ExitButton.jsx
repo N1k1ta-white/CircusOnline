@@ -8,10 +8,10 @@ export default function ExitButton(){
 
     return (
         <>
-            <button class="button-82-pushable" onClick={handleExit}>
-            <span class="button-82-shadow"></span>
-            <span class="button-82-edge"></span>
-            <span class="button-82-front text">
+            <button className="button-82-pushable" onClick={handleExit}>
+            <span className="button-82-shadow"></span>
+            <span className="button-82-edge"></span>
+            <span className="button-82-front text">
                 ESC
             </span>
             </button>

@@ -43,6 +43,8 @@
 }
 .playingDesk .topic {
     width: 50%;
+    text-align: center;
+    color: white;
 }
 
 .playingDesk .deck {
@@ -60,9 +62,17 @@
 }
 
 .Deck{
-    display: block;
-    flex: wrap;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     
+}
+
+.Deck img {
+    width: 70px;
+    height: 70px;
 }
 .gameWindowItem {
     background-color: #aa1d1d; /* Цвет фона элементов сетки */
