@@ -2,17 +2,32 @@ import { io } from 'socket.io-client';
 import {host} from '../apiRoutes'
 
 class ChatClient {
-    constructor(url, namespace, token) {
-        this.socket = io(`${url}/${namespace}`, { query: {token} });
-        this.setupEventListeners();
-    }
 
+    constructor(url, namespace, token) {
+        this.url = url;
+        this.namespace = namespace;
+        this.token = token;
+        this.socket = io(`${url}/${namespace}`, {
+            query: { token },
+            reconnectionAttempts: 5, // Количество попыток повторного подключения
+            reconnectionDelay: 1000 // Задержка между попытками повторного подключения в миллисекундах
+        });
+        this.setupEventListeners();
+        console.log('Client Created!!!')
+
+        
+    }
 
     get(){
         return this.socket;
     }
 
     setupEventListeners() {
+        this.socket.on('error', (error) => {
+            console.error('Socket connection error:', error);
+        });
+
+        
         this.socket.on('connect', () => {
             console.log('Connected to the chat server');
         });
@@ -82,5 +97,5 @@ class ChatClient {
 
 // Example usage
 
-const instance  = new ChatClient(host, 'chat', localStorage.getItem("toke"));
+const instance  = new ChatClient(host, 'chat', localStorage.getItem("token"));
 export default instance

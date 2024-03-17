@@ -25,6 +25,7 @@ export default function Session ({children, ...props}) {
     }
 
     IOSocket.get().on("turn",(data) =>{
+        console.log("turn")
         setStatus("TURN");
         setIsActive(true);
         setTopic(data.topic);
@@ -40,6 +41,7 @@ export default function Session ({children, ...props}) {
         setImages(arr);
     })
     IOSocket.get().on("vote",() => {
+        console.log("vote")
         setStatus("VOTE")
         setIsActive(true);
         const cookieValue = localStorage.getItem("token");
@@ -73,6 +75,7 @@ export default function Session ({children, ...props}) {
 
     function startButtonHandle(){
         IOSocket.get().emit("start");
+        console.log("start");
     }
     
     function handleClickVote(target){

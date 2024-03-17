@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import IOSocket from '../utils/api/SocketIO/ChatClient'
 import api from '../utils/api/apiSettings';
 import { authCheck } from '../utils/api/apiRoutes';
 import Cookies from 'js-cookie';
@@ -20,6 +21,8 @@ export const AuthProvider = ({ children }) => {
             })
                 .then(res => {
                     setIsAuthenticated(res.status >=200 && res.status < 300)
+                    IOSocket.init(cookieValue);
+                    console.log(IOSocket.get().id);
                 })
                 .catch(error => {
                     console.log(error)

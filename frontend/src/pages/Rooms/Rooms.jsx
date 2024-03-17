@@ -39,7 +39,7 @@ export default function Rooms() {
             }, 5000)
         }
         fetchData(cookieValue);
-        
+
         return () => {
             clearInterval(id)
         }
@@ -48,7 +48,9 @@ export default function Rooms() {
     const handleCreateSession = () => {
         setName("")
         const cookieValue = localStorage.getItem("token");
-        ioSocket.joinRoom(name);
+        console.log(name);
+        ioSocket.joinRoom(name.toString());
+        
         async function fetchData(cookieValue) {
             api.post(sessionRoute, {
                 name: name,
