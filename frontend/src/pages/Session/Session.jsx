@@ -75,19 +75,19 @@ export default function Session ({children, ...props}) {
     
 
     function startButtonHandle(){
-        IOSocket.get().on.emit("start");
+        IOSocket.get().emit("start");
     }
     
     function handleClickVote(target){
         if(isActive){
-            IOSocket.get().onemit("vote",{target})
+            IOSocket.get().emit("vote",{target})
             setIsActive(false);
         }
     }
 
     function handleClickTurn(id){
         if(isActive){
-                IOSocket.get().on.emit("play",{username: localStorage.getItem('login'), cardid:id})
+                IOSocket.get().emit("play",{username: localStorage.getItem('login'), cardid:id})
                 setIsActive(false);
             }
     }
@@ -153,6 +153,10 @@ export default function Session ({children, ...props}) {
                     </div>
                     <div className={`${styles.gameWindowItem} ${styles.player}`}>
                         <button className={styles.startButton} 
+                            style={{
+                                cursor: "pointer",
+                                width: "50%"
+                            }}
                             onClick={startButtonHandle} 
                             disabled = {localStorage.getItem("login") === owner}>START</button>
                     </div>

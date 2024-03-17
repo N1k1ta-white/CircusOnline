@@ -16,7 +16,7 @@ export const LoginButton = ({name}) => {
                 console.log(response.data)
                 if(response.status >= 200 && response.status < 300){
                     console.log(response.data.data)
-                    localStorage.setItem("login", response.data.data.user._username)
+                    localStorage.setItem("login", response.data.data.user.username)
                     localStorage.setItem("token", response.data.data.token)
                     login(); 
                 } else {
