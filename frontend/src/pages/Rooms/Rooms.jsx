@@ -4,13 +4,30 @@ import RoomItem from './RoomItem'
 import api from '../../utils/api/apiSettings'
 import styles from './Rooms.module.css'
 import Input from '../../components/Input/Input'
+import io  from 'socket.io-client'
 import { useNavigate } from 'react-router-dom'
+import { host } from '../../utils/api/apiRoutes'
+
+
 
 export default function Rooms() {
     const [loading, setLoading] = useState(true)
     const [sessions, setSessions] = useState([])
     const [name, setName] = useState("")
     const navigate = useNavigate()
+    
+    // const socket = io(host + "/chat");
+    
+    // socket.on("connect", () => {
+    //     console.log(socket.connected); // true
+    //   });
+    //   socket.io.on("reconnect_attempt", () => {
+    //     console.log("SNOVA")
+    //   });
+    // socket.on("disconnect", (reason, details) => {
+    //     console.log(reason + "PISDA")
+    //   });
+      
     useEffect(() => {
         const cookieValue = localStorage.getItem("token");
         let id
@@ -81,6 +98,7 @@ export default function Rooms() {
                         <div className={styles["newSessionInner"]}>
                             <Input type={"text"} placeholder={"Type a name"} value={name} setValue={setName} />
                             <button onClick={handleCreateSession}>Create session</button>
+                            
                         </div>
                     </div>
                 </div>
