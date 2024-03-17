@@ -7,8 +7,6 @@ import Deck from "../Game/Deck/Deck"
 import ExitButton from "../Game/ExitButton/ExitButton";
 export default function Session ({children, ...props}) {
 
-
-
     const  {name} = useParams();
     useEffect(() => {
         console.log(name)
