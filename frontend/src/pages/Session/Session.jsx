@@ -41,7 +41,9 @@ export default function Session ({children, ...props}) {
         let arr = [img1,img2,img3,img4];
         setImages(arr);
     })
+
     IOSocket.get().on("vote",() => {
+        console.log("vote")
         setStatus("VOTE")
         setIsActive(true);
         const cookieValue = localStorage.getItem("token");
@@ -75,6 +77,7 @@ export default function Session ({children, ...props}) {
 
     function startButtonHandle(){
         IOSocket.get().emit("start");
+        console.log("start");
     }
     
     function handleClickVote(target){
@@ -132,21 +135,21 @@ export default function Session ({children, ...props}) {
                         </div>
                         {
                             status === "VOTE" ?  
-                            <section className = {styles["deck"]}>
+                            <section className = {styles["votes"]}>
                                 {voteCards.map((crd) => <img onClick={()=>handleClickVote(crd.username)} className = "image" src = {crd.card} alt="MEME" /> )}
                             </section>  : <></>
                         }
                     </div>
                     <div className={`${styles.gameWindowItem} ${styles.player}`}></div>
-                    <div className={`${styles.gameWindowItem} ${styles.Deck}`}>
+                    <div className={`${styles.gameWindowItem} ${styles.playingDesks}`} >
                         <>{
                             status === "TURN"?
-                        
-                            <section className = {styles["deck"]}>
+                            <section className = {styles.deckSection}>
                                 {images.map((crd,index) => <img value = {crd.index} onClick={(e)=>handleClickTurn(e.target.value)} className = "image" src = {crd.crd} alt="MEME" /> )}
                             </section> 
                             :
-                            <></> 
+                                <>
+                                </> 
                             }
                         </>
                     </div>

@@ -2,17 +2,32 @@ import { io } from 'socket.io-client';
 import {host} from '../apiRoutes'
 
 class ChatClient {
-    constructor(url, namespace, token) {
-        this.socket = io(`${url}/${namespace}`, { query: {token} });
-        this.setupEventListeners();
-    }
 
+    constructor(url, namespace, token) {
+        this.url = url;
+        this.namespace = namespace;
+        this.token = token;
+        this.socket = io(`${url}/${namespace}`, {
+            query: { token },
+            reconnectionAttempts: 5, // Количество попыток повторного подключения
+            reconnectionDelay: 1000 // Задержка между попытками повторного подключения в миллисекундах
+        });
+        this.setupEventListeners();
+        console.log('Client Created!!!')
+
+        
+    }
 
     get(){
         return this.socket;
     }
 
     setupEventListeners() {
+        this.socket.on('error', (error) => {
+            console.error('Socket connection error:', error);
+        });
+
+        
         this.socket.on('connect', () => {
             console.log('Connected to the chat server');
         });
@@ -78,6 +93,7 @@ class ChatClient {
         this.socket.emit('sendMessage', { session, message });
     }
 
+    
     addCardToDesk(room, card, username) {
         this.socket.emit('addCardToDesk', { room, card, username });
     }
