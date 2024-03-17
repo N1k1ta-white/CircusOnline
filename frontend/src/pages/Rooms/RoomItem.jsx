@@ -6,6 +6,7 @@ import api from '../../utils/api/apiSettings'
 import { sessionRoute } from '../../utils/api/apiRoutes'
 
 export default function RoomItem(props) {
+    console.log(props.players)
     const navigate = useNavigate()
     const handleJoinGroup = () => {
         const cookieValue = localStorage.getItem("token");
@@ -40,9 +41,11 @@ export default function RoomItem(props) {
             <span><b><u>Players:</u></b></span>
             {
                 props.players.map((item, index) => {
-                    <div style = {{
-                        background: item.color
-                    }} key={index} className={styles["player"]}>{item.name?.charAt(0).toUpperCase()}</div>
+                    return (
+                        <div style = {{
+                            background: item._color
+                        }} key={index} className={styles["player"]}>{item._username?.charAt(0).toUpperCase()}</div>
+                    )
                 })
             }
         </div>
