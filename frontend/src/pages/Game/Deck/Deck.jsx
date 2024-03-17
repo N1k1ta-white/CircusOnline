@@ -19,10 +19,6 @@ export default function Deck(props){
 
 
     return(
-        <>
-           <section className = {styles["deck"]}>
-                {cards.map((crd, index) => <Card key = {index} {... crd} callback ={removeCard}/>)}
-            </section> 
-        </>
+        
     )
 }
