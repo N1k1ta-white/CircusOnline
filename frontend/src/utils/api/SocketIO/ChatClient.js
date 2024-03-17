@@ -7,6 +7,11 @@ class ChatClient {
         this.setupEventListeners();
     }
 
+
+    get(){
+        return this.socket;
+    }
+
     setupEventListeners() {
         this.socket.on('connect', () => {
             console.log('Connected to the chat server');
@@ -51,7 +56,10 @@ class ChatClient {
 
     joinRoom(session) {
         this.socket.emit('joinRoom', { session });
+        console.log("joining in " + session);
     }
+
+
 
     checkConnection(){
         console.log(this.socket.connected);

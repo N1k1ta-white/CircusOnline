@@ -20,9 +20,8 @@ export default function Chat({}){
             setMessages(messages);
             setMessage("")
         }
-        
     }
-
+    
     return(
         <>
             <div className="menu">
